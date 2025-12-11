@@ -1,0 +1,1 @@
+File chính là file main.py á. Anh đang viết ra 3 file rồi sửa dần để back up + check môi trường nên trông nó sẽ hơi phèn

@@ -1,0 +1,34 @@
+# Software Product Evaluation Report 
+
+Report Title: Software Product Evaluation Report: SoundCloud
+Student: Tran Minh Anh Nguyen
+Student ID: U1170655
+Submission Date: $4^{\text {th }}$ July 2025
+Course: CSC1410 - Software Engineering Foundations
+Lecturer: Dr. Zhi ChenIn recent years, the development of the music industry has been significantly faster. This has led to the strong development of many online music streaming platforms. However, this essay will focus on the one of the popular platforms: SoundCloud application.
+
+Firstly, as a platform that provides open music services, SoundCloud will have basic functions for artists to upload, share and promote music, and will allow users to discover and search for their favorite songs and artists.
+
+Secondly, SoundCloud is designed to meet a wide range of needs, serving both creators and consumers of content, with its core audience being young people with $63.5 \%$ of its audience being between the ages of 18 and 34 . It is also widely applicable and much cheaper than custom software, and is updated and maintained regularly. It is also not a custom solution for organizations or businesses, so it can be said that SoundCloud is a generic software.
+
+In terms of features, SoundCloud has three notable features. First of all, uploading and sharing music representing a "User Story". This can be considered the core function for an online music platform like SoundCloud, it allows artists, famous or unknown, to have the opportunity to upload their audio files or music, then share widely through just a link, thereby easily spreading content with just a few clicks.
+
+Another good thing about SoundCloud's function is that it will allow users to comment according to a specific time frame, which can easily make a piece of music become a trend, especially in the era of short video platforms like Tik Tok dominating the cyberspace. It can also be said that this is a typical example of a unique scenario through which users can interact more deeply with the music without just commenting on simple general feelings, thereby being able to provide more information to music artists about market demand.
+
+Finally, an important feature, through the use of some machine learning techniques, SoundCloud often gives some suggested songs to users based on the characteristics of the songs they have listened to. This helps to personalize and enhance the customer's user experience.
+
+The two biggest competitors that SoundCloud's team faces are Spotify and YouTube Music, but each of these platforms has its own unique way of operating and its own customer base. While Spotify and Youtube Music focus on distributing music from well-known bands and artists, SoundCloud, on the other hand, has emerged as a platform for independent or emerging artists who do not yet have a large audience. In this way, we can see the difference in "application domains" and "primary users" of each of the above platforms. In addition, SoundCloud's strength is the ability to interact with the community, with the comment feature on the music timeline that can create unique interactions, allowing listeners to respond to specific parts of the music, while allowing musicians to gain more experience from those who have gone before or have better musical perception, thereby promoting the ability to "Collaboration and Communication" that Youtube may focus less on than this platform. Finally, there is "Content Management" and "Data Accessibility". SoundCloud is not too strict when it comes to remixes, demos, or just unreleased music. This is because SoundCloud is an open platform and is easily accessible to a wide range of customers. Meanwhile, Youtube Music and Spotify are both very strict with their agreements and terms, which limits the content that can be posted.
+
+SoundCloud's main users are independent artists, DJs or podcasters, they are "End-Users and Clients" with the ability to create content and provide content to users. The main customer file that SoundCloud isaiming for is also extremely diverse. It can include basic users and music listeners, along with the SoundCloud Go+ subscription package that helps this customer file have the ability to listen ad-free and unlimited. In addition, it also includes brands and people with advertising needs, they will pay to advertise their brands to other users. And finally, there are record labels and artists that SoundCloud provides services related to content distribution.
+
+Finally, in terms of advantages, SoundCloud is considered to have a fairly simple interface, deployed on both the application and the website, with the upload and sharing section appearing right on the homepage, helping artists to easily share content easily, showing that this is a fairly complete platform in terms of Usability. In addition, the Scalability ability is also well done through millions of uploaded songs and podcasts ( 250 million tracks in 2023), which clearly shows the ability to "auto-scale" to handle large amounts of data and concurrent users. And from the listed functions, users can clearly see the outstanding advantages of SoundCloud. A typical example is the ability to promote "Collaboration and Communication" that this platform brings, thereby creating a community with higher interaction than its competitors. However, because it is an open platform, SoundCloud has a fatal weakness in terms of copyright. SoundCloud allows all musicians to upload whatever content they want with less strict censorship, so they often face copyright infringement issues and have to work harder on "risk management". In addition, economically, the platform uses a few long ads to insert between two songs being played, making users feel disappointed or uncomfortable if they do not register for a paid package, and over time, they may lose a certain number of customers in the current extremely tense competition for users. And finally, it is "security and privacy", this is an extremely big challenge that not only SoundCloud but all other platforms with many users are facing. Due to the large number of users ( 130 million users as of 2023), user security risks are a huge challenge for SoundCloud's technical team.
+
+In conclusion, although not as excellent as products from big companies on the market, SoundCloud is still doing a good job with the diversity of an open platform, thereby providing content suitable for tens of millions of customers with hundreds of millions of different songs.
+
+# Reference 
+
+1. Joseph D'Souza (2025). SoundCloud Statistics and Facts. Retrieved from: SoundCloud Statistics And Facts [2025]
+2. Wikipedia. Retrieved from: SoundCloud - Wikipedia tiếng Việt
+3. SoundCloud: Retrieved from: What is SoundCloud? - SoundCloud Help Center
+4. Dr Zhi Chen. CSC1410 Week 1, 2, 3, 4, 5 Tutorial
+5. Dr Zhi Chen. CSC1410 Module 2, 3, 4, 5
