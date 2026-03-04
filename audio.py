@@ -16,7 +16,7 @@ def text_to_speech():
         engine.runAndWait()
     
     else: 
-        print("Error. Cannot read!")
+        print("Error. Cannot read!") 
 
 if __name__ == "__main__":
     text_to_speech()

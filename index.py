@@ -43,8 +43,8 @@ class OCRProcessor:
             for page in response.pages:
                 f.write(page.markdown)
                 # Export images if needed
-                for image in page.images:
-                    self._export_image(image, output_dir)
+                # for image in page.images:
+                #     self._export_image(image, output_dir)
         
         return output_path
 
@@ -52,11 +52,11 @@ class OCRProcessor:
         _, encoded = data_uri.split(',', 1)
         return base64.b64decode(encoded)
 
-    def _export_image(self, image, output_dir):
-        parsed_image = self._data_uri_to_bytes(image.image_base64)
-        image_path = os.path.join(output_dir, image.id)
-        with open(image_path, 'wb') as f:
-            f.write(parsed_image)
+    # def _export_image(self, image, output_dir):
+    #     parsed_image = self._data_uri_to_bytes(image.image_base64)
+    #     image_path = os.path.join(output_dir, image.id)
+    #     with open(image_path, 'wb') as f:
+    #         f.write(parsed_image)
 
 class LLMModel:
     """
@@ -67,7 +67,6 @@ class LLMModel:
         self.model = "gemini-2.0-flash"
 
     def summarize_document(self, file_path):
-
         #Prompt from txt file
         prompt_file = "TransferEdu/txt_file/prompt_instruction.txt"
         if not os.path.exists(prompt_file):
@@ -101,9 +100,8 @@ class LLMModel:
             contents=contents,
         ):
             if chunk.text:
-                print(chunk.text, end="")
-                full_response += chunk.text # Cộng dồn nội dung vào biến
-        
+                # print(chunk.text, end="")   #  Print out the result
+                full_response += chunk.text # Adding content to variable
         return full_response
 
 class Workflow:
@@ -115,6 +113,7 @@ class Workflow:
         self.llm_summarizer = LLMModel(api_key=gemini_key)
 
     def run_workflow(self, input_file_path):
+        print(input_pdf_file)
         print("Start Processing...")
         file_id = self.ocr_processor.upload_document(input_file_path)
         file_url = self.ocr_processor.get_signed_url(file_id)
@@ -147,4 +146,3 @@ if __name__ == '__main__':
     # Run Process
     workflow = Workflow(mistral_key=mistral_api_key, gemini_key=gemini_api_key)
     workflow.run_workflow(input_pdf_file)
-
