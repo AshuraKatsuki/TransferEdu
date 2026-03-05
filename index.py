@@ -4,6 +4,7 @@ from google import genai
 from google.genai import types
 from dotenv import load_dotenv
 from mistralai import Mistral
+import pyttsx3 as ts
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 class OCRProcessor:
@@ -104,6 +105,20 @@ class LLMModel:
                 full_response += chunk.text # Adding content to variable
         return full_response
 
+class TextandAudio:
+    def __init__(self):
+        self.engine = ts.init()
+
+    def text_to_speech(self, text):
+        file_path = os.path.join(base_dir, "output.md")
+        if os.path.exists(file_path):
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            clean_text = text.replace("#", "").replace("*", "")
+            self.engine.say(content)
+            self.engine.runAndWait()
+        
+
 class Workflow:
     """
     Processing.
@@ -111,17 +126,21 @@ class Workflow:
     def __init__(self, mistral_key, gemini_key):
         self.ocr_processor = OCRProcessor(api_key=mistral_key)
         self.llm_summarizer = LLMModel(api_key=gemini_key)
+        self.audio = TextandAudio()
 
     def run_workflow(self, input_file_path):
-        print(input_pdf_file)
+        print("Getting file from:", input_pdf_file)
+        # Run OCR and save into output.md
         print("Start Processing...")
         file_id = self.ocr_processor.upload_document(input_file_path)
         file_url = self.ocr_processor.get_signed_url(file_id)
         output_file = self.ocr_processor.process_ocr(file_url)
         print("End Process.")
-        self.output_saving(output_file)
+        self.llm_processing(output_file)
+        self.audio.text_to_speech(output_file)
+        
 
-    def output_saving(self, output_file, filename="output.md"):
+    def llm_processing(self, output_file, filename="output.md"):
         output_path = os.path.join(base_dir, filename)
         summary_result = self.llm_summarizer.summarize_document(output_file)
 
@@ -133,11 +152,10 @@ class Workflow:
         
         else:
             print("Error. AI not return. Cannot saved")
-
+    
 if __name__ == '__main__':
     # Load env
     load_dotenv()
-    
     # API keys
     mistral_api_key = os.getenv('MISTRAL_AI_API') 
     gemini_api_key = os.getenv('GEMINI_API')
