@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TransferEdu | AI Document Processor</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #fafafa; color: #333; display: flex; justify-content: center; padding-top: 50px; }
+        .app-card { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 100%; max-width: 500px; }
+        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .upload-section { margin: 20px 0; }
+        button { background: #3498db; color: white; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; transition: 0.3s; width: 100%; }
+        button:hover { background: #2980b9; }
+        #output-box { margin-top: 25px; padding: 15px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; display: none; line-height: 1.6; }
+        .loader { display: none; font-style: italic; color: #7f8c8d; text-align: center; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="app-card">
+        <h2>TransferEdu AI</h2>
+        <p>Upload a PDF to extract, summarize, and play audio.</p>
+        
+        <div class="upload-section">
+            <input type="file" id="fileInput" accept=".pdf">
+        </div>
+        
+        <button id="processBtn">Process Document</button>
+        
+        <div class="loader" id="loadingText">AI is processing, please wait...</div>
+        <div id="output-box"></div>
+    </div>
+
+    <script>
+        /**
+         * Core logic to handle file upload and API interaction
+         */
+        const processBtn = document.getElementById('processBtn');
+        const fileInput = document.getElementById('fileInput');
+        const outputBox = document.getElementById('output-box');
+        const loader = document.getElementById('loadingText');
+
+        processBtn.onclick = async () => {
+            if (!fileInput.files[0]) return alert("Please select a PDF file first.");
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            // UI state: Loading
+            loader.style.display = 'block';
+            outputBox.style.display = 'none';
+            processBtn.disabled = true;
+
+            try {
+                // Send post request to Flask API
+                const response = await fetch('/api/summarize', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (data.status === "success") {
+                    outputBox.innerText = data.summary;
+                    outputBox.style.display = 'block';
+                } else {
+                    alert("Error: " + data.message);
+                }
+            } catch (err) {
+                console.error("Connection failed:", err);
+                alert("Server connection failed.");
+            } finally {
+                loader.style.display = 'none';
+                processBtn.disabled = false;
+            }
+        };
+    </script>
+</body>
+</html>
