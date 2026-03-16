@@ -36,7 +36,7 @@ class OCRProcessor:
                 'type': 'document_url',
                 'document_url': file_url
             },
-            include_image_base64=True,
+            # include_image_base64=True,
         )
 
         output_path = os.path.join(output_dir, 'output.md')
