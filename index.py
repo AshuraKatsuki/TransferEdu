@@ -36,16 +36,13 @@ class OCRProcessor:
                 'type': 'document_url',
                 'document_url': file_url
             },
-            # include_image_base64=True,
+            
         )
 
         output_path = os.path.join(output_dir, 'output.md')
         with open(output_path, 'w', encoding='utf-8') as f:
             for page in response.pages:
                 f.write(page.markdown)
-                # Export images if needed
-                # for image in page.images:
-                #     self._export_image(image, output_dir)
         
         return output_path
 
@@ -53,11 +50,6 @@ class OCRProcessor:
         _, encoded = data_uri.split(',', 1)
         return base64.b64decode(encoded)
 
-    # def _export_image(self, image, output_dir):
-    #     parsed_image = self._data_uri_to_bytes(image.image_base64)
-    #     image_path = os.path.join(output_dir, image.id)
-    #     with open(image_path, 'wb') as f:
-    #         f.write(parsed_image)
 
 class LLMModel:
     """
@@ -68,8 +60,8 @@ class LLMModel:
         self.model = "gemini-2.0-flash"
 
     def summarize_document(self, file_path):
-        #Prompt from txt file
-        prompt_file = "TransferEdu/txt_file/prompt_instruction.txt"
+        # Prompt from txt file
+        prompt_file = os.path.join(base_dir, 'txt_file', 'prompt_instruction.txt')
         if not os.path.exists(prompt_file):
             raise FileNotFoundError(f"Error: Prompt file not found at {prompt_file}")
 
@@ -160,6 +152,7 @@ if __name__ == '__main__':
     mistral_api_key = os.getenv('MISTRAL_AI_API') 
     gemini_api_key = os.getenv('GEMINI_API')
     input_pdf_file = os.path.join(base_dir, 'pdf_file', 'module01.pdf')
+    print(input_pdf_file)
     
     # Run Process
     workflow = Workflow(mistral_key=mistral_api_key, gemini_key=gemini_api_key)
